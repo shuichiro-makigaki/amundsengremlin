@@ -366,6 +366,12 @@ class VertexTypes(Enum):
             # except: we get different application_url per kind so keep those (but if a kind's url changes, we'll keep
             # the old one around so the model isn't perfect)
             Property(name='application_url', type=GremlinType.String, cardinality=GremlinCardinality.set)])
+    Badge = VertexType.construct_type(
+        label='Badge',
+        properties=[])
+    Chart = VertexType.construct_type(
+        label='Chart',
+        properties=[])
     Column = VertexType.construct_type(
         label='Column',
         properties=[
@@ -375,6 +381,12 @@ class VertexTypes(Enum):
     Cluster = VertexType.construct_type(
         label='Cluster',
         properties=[Property(name='name', type=GremlinType.String, required=True)])
+    Dashboard = VertexType.construct_type(
+        label='Dashboard',
+        properties=[])
+    Dashboardgroup = VertexType.construct_type(
+        label='Dashboardgroup',
+        properties=[])
     Database = VertexType.construct_type(
         label='Database',
         properties=[
@@ -389,6 +401,12 @@ class VertexTypes(Enum):
         properties=[
             Property(name='description', type=GremlinType.String, required=True),
             Property(name='description_source', type=GremlinType.String, required=True, comment='effectively an enum')])
+    Execution = VertexType.construct_type(
+        label='Execution',
+        properties=[])
+    Query = VertexType.construct_type(
+        label='Query',
+        properties=[])
     Schema = VertexType.construct_type(
         label='Schema',
         properties=[Property(name='name', type=GremlinType.String, required=True)])
@@ -471,10 +489,17 @@ class EdgeTypes(Enum):
     BelongToTable = EdgeType.construct_type(label='BELONG_TO_TABLE')
     Cluster = EdgeType.construct_type(label='CLUSTER')
     Column = EdgeType.construct_type(label='COLUMN')
+    DashboardOf = EdgeType.construct_type(label='DASHBOARD_OF')
+    DashboardGroupOf = EdgeType.construct_type(label='DASHBOARD_GROUP_OF')
+    DashboardWithTable = EdgeType.construct_type(label='DASHBOARD_WITH_TABLE')
     Database = EdgeType.construct_type(label='DATABASE')
     Description = EdgeType.construct_type(label='DESCRIPTION')
+    Executed = EdgeType.construct_type(label='EXECUTED')
     Follow = EdgeType.construct_type(label='FOLLOW')
     Generates = EdgeType.construct_type(label='GENERATES')
+    HasBadge = EdgeType.construct_type(label='HAS_BADGE')
+    HasChart = EdgeType.construct_type(label='HAS_CHART')
+    HasQuery = EdgeType.construct_type(label='HAS_QUERY')
     LastUpdatedAt = EdgeType.construct_type(label='LAST_UPDATED_AT')
     ManagedBy = EdgeType.construct_type(label='MANAGED_BY')
     Owner = EdgeType.construct_type(label='OWNER')
@@ -492,3 +517,4 @@ class EdgeTypes(Enum):
     Stat = EdgeType.construct_type(label='STAT')
     Table = EdgeType.construct_type(label='TABLE')
     Tag = EdgeType.construct_type(label='TAG')
+    TaggedBy = EdgeType.construct_type(label='TAGGED_BY')
